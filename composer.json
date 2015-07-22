@@ -1,0 +1,8 @@
+{
+    "name": "malkusch/lock-doc",
+    "require": {
+        "php": ">=5",
+	"malkusch/lock": "dev-master",
+	"apigen/apigen": "^4"
+    }
+}

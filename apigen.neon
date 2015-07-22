@@ -1,0 +1,4 @@
+destination: api
+source:
+	- vendor/malkusch/lock/classes/
+	
