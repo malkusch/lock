@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class malkusch\lock\CASMutex</title>
+
+	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-malkusch.html">
+						malkusch<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-malkusch.lock.html">
+						lock<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-malkusch.lock.exception.html">
+						exception					</a>
+
+						</li>
+							</ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-malkusch.lock.CASMutex.html">CASMutex</a></li>
+				<li><a href="class-malkusch.lock.DoubleCheckedLocking.html">DoubleCheckedLocking</a></li>
+				<li><a href="class-malkusch.lock.FlockMutex.html">FlockMutex</a></li>
+				<li><a href="class-malkusch.lock.MemcacheMutex.html">MemcacheMutex</a></li>
+				<li><a href="class-malkusch.lock.Mutex.html">Mutex</a></li>
+				<li><a href="class-malkusch.lock.NoMutex.html">NoMutex</a></li>
+				<li><a href="class-malkusch.lock.SemaphoreMutex.html">SemaphoreMutex</a></li>
+				<li><a href="class-malkusch.lock.TransactionalMutex.html">TransactionalMutex</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-malkusch.lock.html" title="Summary of malkusch\lock"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CASMutex</h1>
+
+
+	<div class="description">
+	<p>CAS based mutex implementation.</p>
+
+<p>This mutex doesn't lock at all. It implements the compare-and-swap
+approach. I.e. it will repeat excuting the code block until it wasn't
+modified in between. Use this only when you know that concurrency is
+a rare event.</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-malkusch.lock.Mutex.html"><span>malkusch\lock\Mutex</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>malkusch\lock\CASMutex</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-malkusch.html">malkusch</a>\<a href="namespace-malkusch.lock.html">lock</a><br>
+		
+
+				<b>License:</b>
+				<a href="WTFPL">WTFPL</a><br>
+				<b>Author:</b>
+				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
+				<b>Link:</b>
+				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
+			<b>Located at</b> <a href="source-class-malkusch.lock.CASMutex.html#7-95" title="Go to source code">CASMutex.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-malkusch.lock.CASMutex.html#32-42" title="Go to source code">__construct</a>( <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+
+		<div class="description short">
+			<p>Sets the timeout.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the timeout.</p>
+
+<p>The default is 3 seconds.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$timeout</var></dt>
+					<dd>The timeout in seconds.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="notify" id="_notify">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_notify">#</a>
+		<code><a href="source-class-malkusch.lock.CASMutex.html#44-50" title="Go to source code">notify</a>( )</code>
+
+		<div class="description short">
+			<p>Notifies the Mutex about a successfull CAS operation.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Notifies the Mutex about a successfull CAS operation.</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="synchronized" id="_synchronized">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_synchronized">#</a>
+		<code><a href="source-class-malkusch.lock.CASMutex.html#52-94" title="Go to source code">synchronized</a>( <span>callable <var>$block</var></span> )</code>
+
+		<div class="description short">
+			<p>Repeats executing a code until a compare-and-swap operation was succesful.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Repeats executing a code until a compare-and-swap operation was succesful.</p>
+
+<p>The code has to be designed in a way that it can be repeated without any
+side effects. When the CAS operation was successful it should notify
+this mutex by calling <a href="CASMutex::notify()">CASMutex::notify()</a>. I.e. the only side effects
+of the code may happen after a successful CAS operation. The CAS
+operation itself is a valid side effect as well.</p>
+
+<p>If the code throws an exception it will stop repeating the execution.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$block</var></dt>
+					<dd>The synchronized execution block.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed<br>The return value of the execution block.
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					Exception<br>The execution block threw an exception.<br>
+					<code><a href="class-malkusch.lock.exception.LockAcquireException.html">malkusch\lock\exception\LockAcquireException</a></code><br>The timeout was reached.
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-malkusch.lock.Mutex.html#methods">malkusch\lock\Mutex</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-malkusch.lock.Mutex.html#_check">check()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
