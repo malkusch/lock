@@ -35,6 +35,16 @@
 						exception					</a>
 
 						</li>
+				<li>
+					<a href="namespace-malkusch.lock.mutex.html">
+						mutex					</a>
+
+						</li>
+				<li>
+					<a href="namespace-malkusch.lock.util.html">
+						util					</a>
+
+						</li>
 							</ul></li></ul></li>
 			</ul>
 		</div>
@@ -51,6 +61,7 @@
 				<li><a href="class-malkusch.lock.exception.LockAcquireException.html">LockAcquireException</a></li>
 				<li class="active"><a href="class-malkusch.lock.exception.LockReleaseException.html">LockReleaseException</a></li>
 				<li><a href="class-malkusch.lock.exception.MutexException.html">MutexException</a></li>
+				<li><a href="class-malkusch.lock.exception.TimeoutException.html">TimeoutException</a></li>
 			</ul>
 
 
@@ -91,6 +102,10 @@
 
 	<div class="description">
 	<p>Failed to release lock.</p>
+
+<p>Take this exception very serious. Failing to release a lock might have
+the potential to introduce deadlocks. Also the critical code was executed
+i.e. side effects may have happened.</p>
 	</div>
 
 	<dl class="tree">
@@ -133,7 +148,7 @@ Exception
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.exception.LockReleaseException.html#5-15" title="Go to source code">exception/LockReleaseException.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.exception.LockReleaseException.html#5-19" title="Go to source code">exception/LockReleaseException.php</a>
 		<br>
 	</div>
 

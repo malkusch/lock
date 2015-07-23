@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class malkusch\lock\Mutex</title>
+	<title>Class malkusch\lock\mutex\Mutex</title>
 
 	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
@@ -35,6 +35,16 @@
 						exception					</a>
 
 						</li>
+				<li class="active">
+					<a href="namespace-malkusch.lock.mutex.html">
+						mutex					</a>
+
+						</li>
+				<li>
+					<a href="namespace-malkusch.lock.util.html">
+						util					</a>
+
+						</li>
 							</ul></li></ul></li>
 			</ul>
 		</div>
@@ -45,14 +55,14 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-malkusch.lock.CASMutex.html">CASMutex</a></li>
-				<li><a href="class-malkusch.lock.DoubleCheckedLocking.html">DoubleCheckedLocking</a></li>
-				<li><a href="class-malkusch.lock.FlockMutex.html">FlockMutex</a></li>
-				<li><a href="class-malkusch.lock.MemcacheMutex.html">MemcacheMutex</a></li>
-				<li class="active"><a href="class-malkusch.lock.Mutex.html">Mutex</a></li>
-				<li><a href="class-malkusch.lock.NoMutex.html">NoMutex</a></li>
-				<li><a href="class-malkusch.lock.SemaphoreMutex.html">SemaphoreMutex</a></li>
-				<li><a href="class-malkusch.lock.TransactionalMutex.html">TransactionalMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.CASMutex.html">CASMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.FlockMutex.html">FlockMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.MemcachedMutex.html">MemcachedMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></li>
+				<li class="active"><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
 
 
@@ -79,7 +89,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-malkusch.lock.html" title="Summary of malkusch\lock"><span>Namespace</span></a>
+				<a href="namespace-malkusch.lock.mutex.html" title="Summary of malkusch\lock\mutex"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -95,19 +105,20 @@
 
 
 	<div class="description">
-	<p>The mutex provides methods for locked execution.</p>
+	<p>The mutex provides methods for exclusive execution.</p>
 	</div>
 
 
 
 	<div>
 		<h4>Direct known subclasses</h4>
-			<a href="class-malkusch.lock.CASMutex.html">malkusch\lock\CASMutex</a>, 
-			<a href="class-malkusch.lock.FlockMutex.html">malkusch\lock\FlockMutex</a>, 
-			<a href="class-malkusch.lock.MemcacheMutex.html">malkusch\lock\MemcacheMutex</a>, 
-			<a href="class-malkusch.lock.NoMutex.html">malkusch\lock\NoMutex</a>, 
-			<a href="class-malkusch.lock.SemaphoreMutex.html">malkusch\lock\SemaphoreMutex</a>, 
-			<a href="class-malkusch.lock.TransactionalMutex.html">malkusch\lock\TransactionalMutex</a>
+			<a href="class-malkusch.lock.mutex.CASMutex.html">malkusch\lock\mutex\CASMutex</a>, 
+			<a href="class-malkusch.lock.mutex.FlockMutex.html">malkusch\lock\mutex\FlockMutex</a>, 
+			<a href="class-malkusch.lock.mutex.MemcachedMutex.html">malkusch\lock\mutex\MemcachedMutex</a>, 
+			<a href="class-malkusch.lock.mutex.MemcacheMutex.html">malkusch\lock\mutex\MemcacheMutex</a>, 
+			<a href="class-malkusch.lock.mutex.NoMutex.html">malkusch\lock\mutex\NoMutex</a>, 
+			<a href="class-malkusch.lock.mutex.SemaphoreMutex.html">malkusch\lock\mutex\SemaphoreMutex</a>, 
+			<a href="class-malkusch.lock.mutex.TransactionalMutex.html">malkusch\lock\mutex\TransactionalMutex</a>
 	</div>
 
 
@@ -118,7 +129,7 @@
 	<div class="info">
 		<b>Abstract</b><br>
 		
-		<b>Namespace:</b> <a href="namespace-malkusch.html">malkusch</a>\<a href="namespace-malkusch.lock.html">lock</a><br>
+		<b>Namespace:</b> <a href="namespace-malkusch.html">malkusch</a>\<a href="namespace-malkusch.lock.html">lock</a>\<a href="namespace-malkusch.lock.mutex.html">mutex</a><br>
 		
 
 				<b>License:</b>
@@ -127,7 +138,7 @@
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.Mutex.html#8-50" title="Go to source code">Mutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.Mutex.html#9-61" title="Go to source code">mutex/Mutex.php</a>
 		<br>
 	</div>
 
@@ -147,7 +158,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_synchronized">#</a>
-		<code><a href="source-class-malkusch.lock.Mutex.html#18-35" title="Go to source code">synchronized</a>( <span>callable <var>$block</var></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.Mutex.html#19-36" title="Go to source code">synchronized</a>( <span>callable <var>$code</var></span> )</code>
 
 		<div class="description short">
 			<p>Executes a block of code exclusively.</p>
@@ -166,7 +177,7 @@ released as well.</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$block</var></dt>
+					<dt><var>$code</var></dt>
 					<dd>The synchronized execution block.</dd>
 				</dl></div>
 
@@ -192,14 +203,14 @@ released as well.</p>
 		<td class="attributes"><code>
 			 public 
 
-			<code><a href="class-malkusch.lock.DoubleCheckedLocking.html">malkusch\lock\DoubleCheckedLocking</a></code>
+			<code><a href="class-malkusch.lock.util.DoubleCheckedLocking.html">malkusch\lock\util\DoubleCheckedLocking</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_check">#</a>
-		<code><a href="source-class-malkusch.lock.Mutex.html#37-49" title="Go to source code">check</a>( <span>callable <var>$check</var></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.Mutex.html#38-60" title="Go to source code">check</a>( <span>callable <var>$check</var></span> )</code>
 
 		<div class="description short">
 			<p>Performs a double-checked locking pattern.</p>
@@ -210,11 +221,20 @@ released as well.</p>
 
 <p>Call <a href="DoubleCheckedLocking::then()">DoubleCheckedLocking::then()</a> on the returned object.</p>
 
+<p>Example:</p>
+
+<pre><span class="php-var">$mutex</span>-&gt;check(<span class="php-keyword1">function</span> () <span class="php-keyword1">use</span> (<span class="php-var">$bankAccount</span>, <span class="php-var">$amount</span>) {
+    <span class="php-keyword1">return</span> <span class="php-var">$bankAccount</span>-&gt;getBalance() &gt;= <span class="php-var">$amount</span>;
+
+})-&gt;then(<span class="php-keyword1">function</span> () <span class="php-keyword1">use</span> (<span class="php-var">$bankAccount</span>, <span class="php-var">$amount</span>) {
+    <span class="php-var">$bankAccount</span>-&gt;withdraw(<span class="php-var">$amount</span>);
+});</pre>
+
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><a href="class-malkusch.lock.DoubleCheckedLocking.html">malkusch\lock\DoubleCheckedLocking</a></code><br>The double-checked locking pattern.
+					<code><a href="class-malkusch.lock.util.DoubleCheckedLocking.html">malkusch\lock\util\DoubleCheckedLocking</a></code><br>The double-checked locking pattern.
 				</div>
 
 

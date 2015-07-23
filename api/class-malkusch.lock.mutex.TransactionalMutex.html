@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class malkusch\lock\TransactionalMutex</title>
+	<title>Class malkusch\lock\mutex\TransactionalMutex</title>
 
 	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
@@ -35,6 +35,16 @@
 						exception					</a>
 
 						</li>
+				<li class="active">
+					<a href="namespace-malkusch.lock.mutex.html">
+						mutex					</a>
+
+						</li>
+				<li>
+					<a href="namespace-malkusch.lock.util.html">
+						util					</a>
+
+						</li>
 							</ul></li></ul></li>
 			</ul>
 		</div>
@@ -45,14 +55,14 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-malkusch.lock.CASMutex.html">CASMutex</a></li>
-				<li><a href="class-malkusch.lock.DoubleCheckedLocking.html">DoubleCheckedLocking</a></li>
-				<li><a href="class-malkusch.lock.FlockMutex.html">FlockMutex</a></li>
-				<li><a href="class-malkusch.lock.MemcacheMutex.html">MemcacheMutex</a></li>
-				<li><a href="class-malkusch.lock.Mutex.html">Mutex</a></li>
-				<li><a href="class-malkusch.lock.NoMutex.html">NoMutex</a></li>
-				<li><a href="class-malkusch.lock.SemaphoreMutex.html">SemaphoreMutex</a></li>
-				<li class="active"><a href="class-malkusch.lock.TransactionalMutex.html">TransactionalMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.CASMutex.html">CASMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.FlockMutex.html">FlockMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.MemcachedMutex.html">MemcachedMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
+				<li class="active"><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
 
 
@@ -79,7 +89,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-malkusch.lock.html" title="Summary of malkusch\lock"><span>Namespace</span></a>
+				<a href="namespace-malkusch.lock.mutex.html" title="Summary of malkusch\lock\mutex"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -102,14 +112,14 @@
 
 	<dl class="tree">
 		<dd style="padding-left:0px">
-			<a href="class-malkusch.lock.Mutex.html"><span>malkusch\lock\Mutex</span></a>
+			<a href="class-malkusch.lock.mutex.Mutex.html"><span>malkusch\lock\mutex\Mutex</span></a>
 			
 			
 			
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>malkusch\lock\TransactionalMutex</span></b>			
+<b><span>malkusch\lock\mutex\TransactionalMutex</span></b>			
 			
 			
 		</dd>
@@ -125,7 +135,7 @@
 	<div class="info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-malkusch.html">malkusch</a>\<a href="namespace-malkusch.lock.html">lock</a><br>
+		<b>Namespace:</b> <a href="namespace-malkusch.html">malkusch</a>\<a href="namespace-malkusch.lock.html">lock</a>\<a href="namespace-malkusch.lock.mutex.html">mutex</a><br>
 		
 
 				<b>License:</b>
@@ -134,7 +144,7 @@
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.TransactionalMutex.html#7-84" title="Go to source code">TransactionalMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.TransactionalMutex.html#8-85" title="Go to source code">mutex/TransactionalMutex.php</a>
 		<br>
 	</div>
 
@@ -154,7 +164,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.TransactionalMutex.html#29-39" title="Go to source code">__construct</a>( <span>PDO <var>$pdo</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.TransactionalMutex.html#30-40" title="Go to source code">__construct</a>( <span>PDO <var>$pdo</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
 			<p>Sets the PDO.</p>
@@ -191,7 +201,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_synchronized">#</a>
-		<code><a href="source-class-malkusch.lock.TransactionalMutex.html#41-83" title="Go to source code">synchronized</a>( <span>callable <var>$block</var></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.TransactionalMutex.html#42-84" title="Go to source code">synchronized</a>( <span>callable <var>$code</var></span> )</code>
 
 		<div class="description short">
 			<p>Executes the critical code within a transaction.</p>
@@ -209,7 +219,7 @@ the code must not have any side effects besides SQL statements.</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$block</var></dt>
+					<dt><var>$code</var></dt>
 					<dd>The synchronized execution block.</dd>
 				</dl></div>
 
@@ -232,10 +242,10 @@ the code must not have any side effects besides SQL statements.</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-malkusch.lock.Mutex.html#methods">malkusch\lock\Mutex</a></caption>
+	<caption>Methods inherited from <a href="class-malkusch.lock.mutex.Mutex.html#methods">malkusch\lock\mutex\Mutex</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-malkusch.lock.Mutex.html#_check">check()</a>
+			<a href="class-malkusch.lock.mutex.Mutex.html#_check">check()</a>
 		</code></td>
 	</tr>
 	</table>

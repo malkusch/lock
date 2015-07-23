@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class malkusch\lock\DoubleCheckedLocking</title>
+	<title>Class malkusch\lock\util\DoubleCheckedLocking</title>
 
 	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
@@ -35,6 +35,16 @@
 						exception					</a>
 
 						</li>
+				<li>
+					<a href="namespace-malkusch.lock.mutex.html">
+						mutex					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-malkusch.lock.util.html">
+						util					</a>
+
+						</li>
 							</ul></li></ul></li>
 			</ul>
 		</div>
@@ -45,14 +55,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-malkusch.lock.CASMutex.html">CASMutex</a></li>
-				<li class="active"><a href="class-malkusch.lock.DoubleCheckedLocking.html">DoubleCheckedLocking</a></li>
-				<li><a href="class-malkusch.lock.FlockMutex.html">FlockMutex</a></li>
-				<li><a href="class-malkusch.lock.MemcacheMutex.html">MemcacheMutex</a></li>
-				<li><a href="class-malkusch.lock.Mutex.html">Mutex</a></li>
-				<li><a href="class-malkusch.lock.NoMutex.html">NoMutex</a></li>
-				<li><a href="class-malkusch.lock.SemaphoreMutex.html">SemaphoreMutex</a></li>
-				<li><a href="class-malkusch.lock.TransactionalMutex.html">TransactionalMutex</a></li>
+				<li class="active"><a href="class-malkusch.lock.util.DoubleCheckedLocking.html">DoubleCheckedLocking</a></li>
 			</ul>
 
 
@@ -79,7 +82,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-malkusch.lock.html" title="Summary of malkusch\lock"><span>Namespace</span></a>
+				<a href="namespace-malkusch.lock.util.html" title="Summary of malkusch\lock\util"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -96,6 +99,8 @@
 
 	<div class="description">
 	<p>The double-checked locking pattern.</p>
+
+<p>You should not instantiate this class directly. Use <a href="Mutex::check()">Mutex::check()</a>.</p>
 	</div>
 
 
@@ -109,7 +114,7 @@
 	<div class="info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-malkusch.html">malkusch</a>\<a href="namespace-malkusch.lock.html">lock</a><br>
+		<b>Namespace:</b> <a href="namespace-malkusch.html">malkusch</a>\<a href="namespace-malkusch.lock.html">lock</a>\<a href="namespace-malkusch.lock.util.html">util</a><br>
 		
 
 				<b>License:</b>
@@ -118,7 +123,7 @@
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.DoubleCheckedLocking.html#8-73" title="Go to source code">DoubleCheckedLocking.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.util.DoubleCheckedLocking.html#9-76" title="Go to source code">util/DoubleCheckedLocking.php</a>
 		<br>
 	</div>
 
@@ -138,7 +143,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_then">#</a>
-		<code><a href="source-class-malkusch.lock.DoubleCheckedLocking.html#50-72" title="Go to source code">then</a>( <span>callable <var>$code</var></span> )</code>
+		<code><a href="source-class-malkusch.lock.util.DoubleCheckedLocking.html#53-75" title="Go to source code">then</a>( <span>callable <var>$code</var></span> )</code>
 
 		<div class="description short">
 			<p>Executes a code only if a check is true.</p>

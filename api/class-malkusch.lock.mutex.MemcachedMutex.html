@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class malkusch\lock\SemaphoreMutex</title>
+	<title>Class malkusch\lock\mutex\MemcachedMutex</title>
 
 	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
@@ -35,6 +35,16 @@
 						exception					</a>
 
 						</li>
+				<li class="active">
+					<a href="namespace-malkusch.lock.mutex.html">
+						mutex					</a>
+
+						</li>
+				<li>
+					<a href="namespace-malkusch.lock.util.html">
+						util					</a>
+
+						</li>
 							</ul></li></ul></li>
 			</ul>
 		</div>
@@ -45,14 +55,14 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-malkusch.lock.CASMutex.html">CASMutex</a></li>
-				<li><a href="class-malkusch.lock.DoubleCheckedLocking.html">DoubleCheckedLocking</a></li>
-				<li><a href="class-malkusch.lock.FlockMutex.html">FlockMutex</a></li>
-				<li><a href="class-malkusch.lock.MemcacheMutex.html">MemcacheMutex</a></li>
-				<li><a href="class-malkusch.lock.Mutex.html">Mutex</a></li>
-				<li><a href="class-malkusch.lock.NoMutex.html">NoMutex</a></li>
-				<li class="active"><a href="class-malkusch.lock.SemaphoreMutex.html">SemaphoreMutex</a></li>
-				<li><a href="class-malkusch.lock.TransactionalMutex.html">TransactionalMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.CASMutex.html">CASMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.FlockMutex.html">FlockMutex</a></li>
+				<li class="active"><a href="class-malkusch.lock.mutex.MemcachedMutex.html">MemcachedMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
 
 
@@ -79,7 +89,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-malkusch.lock.html" title="Summary of malkusch\lock"><span>Namespace</span></a>
+				<a href="namespace-malkusch.lock.mutex.html" title="Summary of malkusch\lock\mutex"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -91,23 +101,25 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class SemaphoreMutex</h1>
+	<h1>Class MemcachedMutex</h1>
 
 
 	<div class="description">
-	<p>System V IPC based mutex implementation.</p>
+	<p>Memcached based mutex implementation.</p>
+
+<p>This is a lockfree busy waiting with an exponential back off.</p>
 	</div>
 
 	<dl class="tree">
 		<dd style="padding-left:0px">
-			<a href="class-malkusch.lock.Mutex.html"><span>malkusch\lock\Mutex</span></a>
+			<a href="class-malkusch.lock.mutex.Mutex.html"><span>malkusch\lock\mutex\Mutex</span></a>
 			
 			
 			
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>malkusch\lock\SemaphoreMutex</span></b>			
+<b><span>malkusch\lock\mutex\MemcachedMutex</span></b>			
 			
 			
 		</dd>
@@ -123,7 +135,7 @@
 	<div class="info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-malkusch.html">malkusch</a>\<a href="namespace-malkusch.lock.html">lock</a><br>
+		<b>Namespace:</b> <a href="namespace-malkusch.html">malkusch</a>\<a href="namespace-malkusch.lock.html">lock</a>\<a href="namespace-malkusch.lock.mutex.html">mutex</a><br>
 		
 
 				<b>License:</b>
@@ -132,7 +144,7 @@
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.SemaphoreMutex.html#8-54" title="Go to source code">SemaphoreMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.MemcachedMutex.html#9-142" title="Go to source code">mutex/MemcachedMutex.php</a>
 		<br>
 	</div>
 
@@ -152,29 +164,30 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.SemaphoreMutex.html#23-38" title="Go to source code">__construct</a>( <span>resource <var>$semaphore</var></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.MemcachedMutex.html#47-63" title="Go to source code">__construct</a>( <span>string <var>$name</var></span>, <span>Memcached <var>$memcache</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
-			<p>Sets the semaphore id.</p>
+			<p>Sets the lock's name and the connected Memcached API.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Sets the semaphore id.</p>
+			<p>Sets the lock's name and the connected Memcached API.</p>
 
-<p>Use sem_get() to create the semaphore id.</p>
+<p>The Memcached API needs to have at least one server in its pool. I.e.
+it has to be added with Memcached::addServer().</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$semaphore</var></dt>
-					<dd>The semaphore id.</dd>
+					<dt><var>$name</var></dt>
+					<dd>The lock name.</dd>
+					<dt><var>$memcache</var></dt>
+					<dd>The connected Memcached API.</dd>
+					<dt><var>$timeout</var></dt>
+					<dd>The time in seconds a lock expires, default is 3.</dd>
 				</dl></div>
 
 
-				<h4>Throws</h4>
-				<div class="list">
-					InvalidArgumentException<br>The semaphore id is not a valid resource.
-				</div>
 
 
 
@@ -193,7 +206,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_synchronized">#</a>
-		<code><a href="source-class-malkusch.lock.SemaphoreMutex.html#40-53" title="Go to source code">synchronized</a>( <span>callable <var>$block</var></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.MemcachedMutex.html#65-89" title="Go to source code">synchronized</a>( <span>callable <var>$code</var></span> )</code>
 
 		<div class="description short">
 			<p>Executes a block of code exclusively.</p>
@@ -212,7 +225,7 @@ released as well.</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$block</var></dt>
+					<dt><var>$code</var></dt>
 					<dd>The synchronized execution block.</dd>
 				</dl></div>
 
@@ -236,10 +249,10 @@ released as well.</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-malkusch.lock.Mutex.html#methods">malkusch\lock\Mutex</a></caption>
+	<caption>Methods inherited from <a href="class-malkusch.lock.mutex.Mutex.html#methods">malkusch\lock\mutex\Mutex</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-malkusch.lock.Mutex.html#_check">check()</a>
+			<a href="class-malkusch.lock.mutex.Mutex.html#_check">check()</a>
 		</code></td>
 	</tr>
 	</table>

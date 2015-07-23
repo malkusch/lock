@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="robots" content="noindex">
 
-	<title>File NoMutex.php</title>
+	<title>File mutex/NoMutex.php</title>
 
 	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
@@ -36,6 +36,16 @@
 						exception					</a>
 
 						</li>
+				<li>
+					<a href="namespace-malkusch.lock.mutex.html">
+						mutex					</a>
+
+						</li>
+				<li>
+					<a href="namespace-malkusch.lock.util.html">
+						util					</a>
+
+						</li>
 							</ul></li></ul></li>
 			</ul>
 		</div>
@@ -46,14 +56,15 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-malkusch.lock.CASMutex.html">malkusch\lock\CASMutex</a></li>
-				<li><a href="class-malkusch.lock.DoubleCheckedLocking.html">malkusch\lock\DoubleCheckedLocking</a></li>
-				<li><a href="class-malkusch.lock.FlockMutex.html">malkusch\lock\FlockMutex</a></li>
-				<li><a href="class-malkusch.lock.MemcacheMutex.html">malkusch\lock\MemcacheMutex</a></li>
-				<li><a href="class-malkusch.lock.Mutex.html">malkusch\lock\Mutex</a></li>
-				<li><a href="class-malkusch.lock.NoMutex.html">malkusch\lock\NoMutex</a></li>
-				<li><a href="class-malkusch.lock.SemaphoreMutex.html">malkusch\lock\SemaphoreMutex</a></li>
-				<li><a href="class-malkusch.lock.TransactionalMutex.html">malkusch\lock\TransactionalMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.CASMutex.html">malkusch\lock\mutex\CASMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.FlockMutex.html">malkusch\lock\mutex\FlockMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.MemcachedMutex.html">malkusch\lock\mutex\MemcachedMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.MemcacheMutex.html">malkusch\lock\mutex\MemcacheMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.Mutex.html">malkusch\lock\mutex\Mutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.NoMutex.html">malkusch\lock\mutex\NoMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">malkusch\lock\mutex\SemaphoreMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">malkusch\lock\mutex\TransactionalMutex</a></li>
+				<li><a href="class-malkusch.lock.util.DoubleCheckedLocking.html">malkusch\lock\util\DoubleCheckedLocking</a></li>
 			</ul>
 
 
@@ -63,6 +74,7 @@
 				<li><a href="class-malkusch.lock.exception.LockAcquireException.html">malkusch\lock\exception\LockAcquireException</a></li>
 				<li><a href="class-malkusch.lock.exception.LockReleaseException.html">malkusch\lock\exception\LockReleaseException</a></li>
 				<li><a href="class-malkusch.lock.exception.MutexException.html">malkusch\lock\exception\MutexException</a></li>
+				<li><a href="class-malkusch.lock.exception.TimeoutException.html">malkusch\lock\exception\TimeoutException</a></li>
 			</ul>
 
 
@@ -99,7 +111,7 @@
 <pre class="numbers"><code><span class="l"><a href="#1"> 1: </a></span><span class="l"><a href="#2"> 2: </a></span><span class="l"><a href="#3"> 3: </a></span><span class="l"><a href="#4"> 4: </a></span><span class="l"><a href="#5"> 5: </a></span></span><span class="l"><a href="#6"> 6: </a></span></span><span class="l"><a href="#7"> 7: </a></span></span><span class="l"><a href="#8"> 8: </a></span></span><span class="l"><a href="#9"> 9: </a></span></span><span class="l"><a href="#10">10: </a></span></span><span class="l"><a href="#11">11: </a></span></span><span class="l"><a href="#12">12: </a></span></span><span class="l"><a href="#13">13: </a></span></span><span class="l"><a href="#14">14: </a></span><span class="l"><a href="#15">15: </a></span><span class="l"><a href="#16">16: </a></span><span class="l"><a href="#17">17: </a></span><span class="l"><a href="#18">18: </a></span><span class="l"><a href="#19">19: </a></span><span class="l"><a href="#20">20: </a></span><span class="l"><a href="#21">21: </a></span><span class="l"><a href="#22">22: </a></span><span class="l"><a href="#23">23: </a></span></code></pre>
 <pre class="code"><code><span id="1" class="l"><span class="xlang">&lt;?php</span>
 </span><span id="2" class="l">
-</span><span id="3" class="l"><span class="php-keyword1">namespace</span> malkusch\lock;
+</span><span id="3" class="l"><span class="php-keyword1">namespace</span> malkusch\lock\mutex;
 </span><span id="4" class="l">
 </span><span id="5" class="l"><span class="php-comment">/**
 </span></span><span id="6" class="l"><span class="php-comment"> * This mutex doesn't lock at all.
@@ -114,9 +126,9 @@
 </span><span id="15" class="l"><span class="php-keyword1">class</span> NoMutex <span class="php-keyword1">extends</span> Mutex
 </span><span id="16" class="l">{
 </span><span id="17" class="l">    
-</span><span id="18" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> synchronized(<span class="php-keyword1">callable</span> <span class="php-var">$block</span>)
+</span><span id="18" class="l">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> synchronized(<span class="php-keyword1">callable</span> <span class="php-var">$code</span>)
 </span><span id="19" class="l">    {
-</span><span id="20" class="l">        <span class="php-keyword1">return</span> <span class="php-keyword2">call_user_func</span>(<span class="php-var">$block</span>);
+</span><span id="20" class="l">        <span class="php-keyword1">return</span> <span class="php-keyword2">call_user_func</span>(<span class="php-var">$code</span>);
 </span><span id="21" class="l">    }
 </span><span id="22" class="l">}
 </span><span id="23" class="l"></span></code></pre>
@@ -126,7 +138,7 @@
 	</div>
 </div>
 </div>
-<script src="resources/combined.js?fc4e20d71bdd79c956c086a1847e5ef00651e89a"></script>
-<script src="elementlist.js?399a909f170b7b748934bb1ae6efc43e7b10aa82"></script>
+<script src="resources/combined.js?af8a65d2047b070f8793433f41ea494e7490de2e"></script>
+<script src="elementlist.js?0171a9d6015083841f585869635bf8018c72e613"></script>
 </body>
 </html>
