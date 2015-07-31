@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class malkusch\lock\mutex\MemcachedMutex</title>
+	<title>Class malkusch\lock\mutex\PHPRedisMutex</title>
 
 	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
@@ -57,11 +57,11 @@
 			<ul>
 				<li><a href="class-malkusch.lock.mutex.CASMutex.html">CASMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.FlockMutex.html">FlockMutex</a></li>
-				<li class="active"><a href="class-malkusch.lock.mutex.MemcachedMutex.html">MemcachedMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.MemcachedMutex.html">MemcachedMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
-				<li><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
+				<li class="active"><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
@@ -103,11 +103,13 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class MemcachedMutex</h1>
+	<h1>Class PHPRedisMutex</h1>
 
 
 	<div class="description">
-	<p>Memcached based spinlock implementation.</p>
+	<p>Mutex based on the Redlock algorithm using the phpredis extension.</p>
+
+<p>This implementation requires at least phpredis-2.2.4.</p>
 	</div>
 
 	<dl class="tree">
@@ -125,7 +127,13 @@ malkusch\lock\mutex\AbstractSpinlockMutex
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>malkusch\lock\mutex\MemcachedMutex</span></b>			
+malkusch\lock\mutex\AbstractRedisMutex
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>malkusch\lock\mutex\PHPRedisMutex</span></b>			
 			
 			
 		</dd>
@@ -149,8 +157,10 @@ malkusch\lock\mutex\AbstractSpinlockMutex
 				<b>Author:</b>
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
+				<a href="http://redis.io/topics/distlock">http://redis.io/topics/distlock</a><br>
+				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.MemcachedMutex.html#7-62" title="Go to source code">mutex/MemcachedMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.PHPRedisMutex.html#9-81" title="Go to source code">mutex/PHPRedisMutex.php</a>
 		<br>
 	</div>
 
@@ -170,25 +180,25 @@ malkusch\lock\mutex\AbstractSpinlockMutex
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.MemcachedMutex.html#28-45" title="Go to source code">__construct</a>( <span>string <var>$name</var></span>, <span>Memcached <var>$memcache</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.PHPRedisMutex.html#28-46" title="Go to source code">__construct</a>( <span>array <var>$connections</var></span>, <span>string <var>$name</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
-			<p>Sets the lock's name and the connected Memcached API.</p>
+			<p>Sets the connected Redis APIs.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Sets the lock's name and the connected Memcached API.</p>
+			<p>Sets the connected Redis APIs.</p>
 
-<p>The Memcached API needs to have at least one server in its pool. I.e.
-it has to be added with Memcached::addServer().</p>
+<p>The Redis APIs needs to be connected yet. I.e. Redis::connect() was
+called already.</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
+					<dt><var>$connections</var></dt>
+					<dd>The Redis connections.</dd>
 					<dt><var>$name</var></dt>
 					<dd>The lock name.</dd>
-					<dt><var>$memcache</var></dt>
-					<dd>The connected Memcached API.</dd>
 					<dt><var>$timeout</var></dt>
 					<dd>The time in seconds a lock expires, default is 3.</dd>
 				</dl></div>
@@ -196,12 +206,13 @@ it has to be added with Memcached::addServer().</p>
 
 				<h4>Throws</h4>
 				<div class="list">
-					LengthException<br>The timeout must be greater than 0.
+					LengthException<br>The timeout must be greater than 0.<br>
+					<code><a href="class-malkusch.lock.exception.MutexException.html">malkusch\lock\exception\MutexException</a></code><br>Failed to initialize the random generator.
 				</div>
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code>malkusch\lock\mutex\AbstractSpinlockMutex::__construct()</code></div>
+				<div class="list"><code>malkusch\lock\mutex\AbstractRedisMutex::__construct()</code></div>
 
 		</div>
 		</div></td>
@@ -209,11 +220,21 @@ it has to be added with Memcached::addServer().</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from malkusch\lock\mutex\AbstractSpinlockMutex</caption>
+	<caption>Methods inherited from malkusch\lock\mutex\AbstractRedisMutex</caption>
 	<tr>
 		<td><code>
 acquire(), 
-release(), 
+add(), 
+evalScript(), 
+getConnections(), 
+release()
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from malkusch\lock\mutex\AbstractSpinlockMutex</caption>
+	<tr>
+		<td><code>
 synchronized()
 		</code></td>
 	</tr>
