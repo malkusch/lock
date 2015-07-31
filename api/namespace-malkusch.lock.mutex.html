@@ -61,6 +61,8 @@
 				<li><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
@@ -116,11 +118,11 @@
 </tr>
 <tr>
 	<td class="name"><a href="class-malkusch.lock.mutex.MemcachedMutex.html">MemcachedMutex</a></td>
-	<td>Memcached based mutex implementation.</td>
+	<td>Memcached based spinlock implementation.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></td>
-	<td>Memcache based mutex implementation.</td>
+	<td>Memcache based spinlock implementation.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></td>
@@ -131,12 +133,20 @@
 	<td>This mutex doesn't lock at all.</td>
 </tr>
 <tr>
+	<td class="name"><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></td>
+	<td>Mutex based on the Redlock algorithm using the phpredis extension.</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></td>
+	<td>Mutex based on the Redlock algorithm using the Predis API.</td>
+</tr>
+<tr>
 	<td class="name"><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></td>
 	<td>System V IPC based mutex implementation.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></td>
-	<td>Synchronization is delegated to the DBS.</td>
+	<td>Serialization is delegated to the DBS.</td>
 </tr>
 </table>
 
@@ -152,6 +162,6 @@
 </div>
 </div>
 <script src="resources/combined.js?af8a65d2047b070f8793433f41ea494e7490de2e"></script>
-<script src="elementlist.js?0171a9d6015083841f585869635bf8018c72e613"></script>
+<script src="elementlist.js?a1d906fc11810f2695064cfa9256ea182f203893"></script>
 </body>
 </html>

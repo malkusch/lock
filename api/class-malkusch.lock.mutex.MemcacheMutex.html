@@ -61,6 +61,8 @@
 				<li class="active"><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
@@ -105,9 +107,7 @@
 
 
 	<div class="description">
-	<p>Memcache based mutex implementation.</p>
-
-<p>This is a lockfree busy waiting with an exponential back off.</p>
+	<p>Memcache based spinlock implementation.</p>
 	</div>
 
 	<dl class="tree">
@@ -118,6 +118,12 @@
 			
 		</dd>
 		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+malkusch\lock\mutex\AbstractSpinlockMutex
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by">
 <b><span>malkusch\lock\mutex\MemcacheMutex</span></b>			
 			
@@ -144,7 +150,7 @@
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#8-93" title="Go to source code">mutex/MemcacheMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#7-56" title="Go to source code">mutex/MemcacheMutex.php</a>
 		<br>
 	</div>
 
@@ -164,7 +170,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#46-62" title="Go to source code">__construct</a>( <span>string <var>$name</var></span>, <span>Memcache <var>$memcache</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#28-45" title="Go to source code">__construct</a>( <span>string <var>$name</var></span>, <span>Memcache <var>$memcache</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
 			<p>Sets the lock's name and the connected Memcache API.</p>
@@ -188,58 +194,96 @@ I.e. Memcache::connect() was already called.</p>
 				</dl></div>
 
 
+				<h4>Throws</h4>
+				<div class="list">
+					LengthException<br>The timeout must be greater than 0.
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code>malkusch\lock\mutex\AbstractSpinlockMutex::__construct()</code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="acquire" id="_acquire">
+
+		<td class="attributes"><code>
+			 protected 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_acquire">#</a>
+		<code><a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#47-50" title="Go to source code">acquire</a>( <span>string <var>$key</var></span>, <span>integer <var>$expire</var></span> )</code>
+
+		<div class="description short">
+			<p>Tries to acquire a lock.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Tries to acquire a lock.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>The lock key.</dd>
+					<dt><var>$expire</var></dt>
+					<dd>The timeout in seconds when a lock expires.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True, if the lock could be acquired.
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					LockAcquireException<br>An error happened.
+				</div>
 
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="synchronized" id="_synchronized">
+	<tr data-order="release" id="_release">
 
 		<td class="attributes"><code>
-			 public 
+			 protected 
 
-			mixed
+			boolean
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_synchronized">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#64-92" title="Go to source code">synchronized</a>( <span>callable <var>$code</var></span> )</code>
+		<a class="anchor" href="#_release">#</a>
+		<code><a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#52-55" title="Go to source code">release</a>( <span>string <var>$key</var></span> )</code>
 
 		<div class="description short">
-			<p>Executes a block of code exclusively.</p>
+			<p>Tries to release a lock.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Executes a block of code exclusively.</p>
-
-<p>This method implements Java's synchronized semantic. I.e. this method
-waits until a lock could be acquired, executes the code exclusively and
-releases the lock.</p>
-
-<p>The code block may throw an exception. In this case the lock will be
-released as well.</p>
+			<p>Tries to release a lock.</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$code</var></dt>
-					<dd>The synchronized execution block.</dd>
+					<dt><var>$key</var></dt>
+					<dd>The lock key.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					mixed<br>The return value of the execution block.
+					boolean<br>True, if the lock could be released.
 				</div>
 
-				<h4>Throws</h4>
-				<div class="list">
-					Exception<br>The execution block threw an exception.<br>
-					LockAcquireException<br>The mutex could not be aquired, no further side effects.<br>
-					<code><a href="class-malkusch.lock.exception.LockReleaseException.html">malkusch\lock\exception\LockReleaseException</a></code><br>The mutex could not be released, the code was already executed.
-				</div>
 
 
 
@@ -248,6 +292,14 @@ released as well.</p>
 	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from malkusch\lock\mutex\AbstractSpinlockMutex</caption>
+	<tr>
+		<td><code>
+synchronized()
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-malkusch.lock.mutex.Mutex.html#methods">malkusch\lock\mutex\Mutex</a></caption>
 	<tr>
@@ -264,6 +316,14 @@ released as well.</p>
 
 
 
+	<table class="summary inherited">
+	<caption>Constants inherited from malkusch\lock\mutex\AbstractSpinlockMutex</caption>
+	<tr>
+		<td><code>
+<b>PREFIX</b>
+		</code></td>
+	</tr>
+	</table>
 
 
 

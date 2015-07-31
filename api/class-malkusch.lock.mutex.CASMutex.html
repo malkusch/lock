@@ -61,6 +61,8 @@
 				<li><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
@@ -147,7 +149,7 @@ a rare event.</p>
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.CASMutex.html#8-83" title="Go to source code">mutex/CASMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.CASMutex.html#8-84" title="Go to source code">mutex/CASMutex.php</a>
 		<br>
 	</div>
 
@@ -167,7 +169,7 @@ a rare event.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.CASMutex.html#28-38" title="Go to source code">__construct</a>( <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.CASMutex.html#28-39" title="Go to source code">__construct</a>( <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
 			<p>Sets the timeout.</p>
@@ -186,6 +188,10 @@ a rare event.</p>
 				</dl></div>
 
 
+				<h4>Throws</h4>
+				<div class="list">
+					LengthException<br>The timeout must be greater than 0.
+				</div>
 
 
 
@@ -204,7 +210,7 @@ a rare event.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_notify">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.CASMutex.html#40-46" title="Go to source code">notify</a>( )</code>
+		<code><a href="source-class-malkusch.lock.mutex.CASMutex.html#41-47" title="Go to source code">notify</a>( )</code>
 
 		<div class="description short">
 			<p>Notifies the Mutex about a successfull CAS operation.</p>
@@ -234,7 +240,7 @@ a rare event.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_synchronized">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.CASMutex.html#48-82" title="Go to source code">synchronized</a>( <span>callable <var>$code</var></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.CASMutex.html#49-83" title="Go to source code">synchronized</a>( <span>callable <var>$code</var></span> )</code>
 
 		<div class="description short">
 			<p>Repeats executing a code until a compare-and-swap operation was succesful.</p>

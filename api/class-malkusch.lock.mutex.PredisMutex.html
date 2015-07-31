@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class malkusch\lock\mutex\MemcachedMutex</title>
+	<title>Class malkusch\lock\mutex\PredisMutex</title>
 
 	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
@@ -57,12 +57,12 @@
 			<ul>
 				<li><a href="class-malkusch.lock.mutex.CASMutex.html">CASMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.FlockMutex.html">FlockMutex</a></li>
-				<li class="active"><a href="class-malkusch.lock.mutex.MemcachedMutex.html">MemcachedMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.MemcachedMutex.html">MemcachedMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
-				<li><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></li>
+				<li class="active"><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
@@ -103,11 +103,11 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class MemcachedMutex</h1>
+	<h1>Class PredisMutex</h1>
 
 
 	<div class="description">
-	<p>Memcached based spinlock implementation.</p>
+	<p>Mutex based on the Redlock algorithm using the Predis API.</p>
 	</div>
 
 	<dl class="tree">
@@ -125,7 +125,13 @@ malkusch\lock\mutex\AbstractSpinlockMutex
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>malkusch\lock\mutex\MemcachedMutex</span></b>			
+malkusch\lock\mutex\AbstractRedisMutex
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>malkusch\lock\mutex\PredisMutex</span></b>			
 			
 			
 		</dd>
@@ -148,9 +154,11 @@ malkusch\lock\mutex\AbstractSpinlockMutex
 				<a href="WTFPL">WTFPL</a><br>
 				<b>Author:</b>
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
+				<b>See:</b>
+				http://redis.io/topics/distlock<br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.MemcachedMutex.html#7-56" title="Go to source code">mutex/MemcachedMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.PredisMutex.html#8-67" title="Go to source code">mutex/PredisMutex.php</a>
 		<br>
 	</div>
 
@@ -170,25 +178,22 @@ malkusch\lock\mutex\AbstractSpinlockMutex
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.MemcachedMutex.html#28-45" title="Go to source code">__construct</a>( <span>string <var>$name</var></span>, <span>Memcached <var>$memcache</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.PredisMutex.html#24-38" title="Go to source code">__construct</a>( <span>array <var>$clients</var></span>, <span>string <var>$name</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
-			<p>Sets the lock's name and the connected Memcached API.</p>
+			<p>Sets the Redis connections.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Sets the lock's name and the connected Memcached API.</p>
-
-<p>The Memcached API needs to have at least one server in its pool. I.e.
-it has to be added with Memcached::addServer().</p>
+			<p>Sets the Redis connections.</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
+					<dt><var>$clients</var></dt>
+					<dd>The Redis clients.</dd>
 					<dt><var>$name</var></dt>
 					<dd>The lock name.</dd>
-					<dt><var>$memcache</var></dt>
-					<dd>The connected Memcached API.</dd>
 					<dt><var>$timeout</var></dt>
 					<dd>The time in seconds a lock expires, default is 3.</dd>
 				</dl></div>
@@ -201,12 +206,12 @@ it has to be added with Memcached::addServer().</p>
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code>malkusch\lock\mutex\AbstractSpinlockMutex::__construct()</code></div>
+				<div class="list"><code>malkusch\lock\mutex\AbstractRedisMutex::__construct()</code></div>
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="acquire" id="_acquire">
+	<tr data-order="add" id="_add">
 
 		<td class="attributes"><code>
 			 protected 
@@ -217,71 +222,111 @@ it has to be added with Memcached::addServer().</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_acquire">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.MemcachedMutex.html#47-50" title="Go to source code">acquire</a>( <span>string <var>$key</var></span>, <span>integer <var>$expire</var></span> )</code>
+		<a class="anchor" href="#_add">#</a>
+		<code><a href="source-class-malkusch.lock.mutex.PredisMutex.html#40-48" title="Go to source code">add</a>( <span>mixed <var>$connection</var></span>, <span>string <var>$key</var></span>, <span>string <var>$value</var></span>, <span>integer <var>$expire</var></span> )</code>
 
 		<div class="description short">
-			<p>Tries to acquire a lock.</p>
+			<p>Sets the key only if such key doesn't exist at the server yet.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Tries to acquire a lock.</p>
+			<p>Sets the key only if such key doesn't exist at the server yet.</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
+					<dt><var>$connection</var></dt>
+					<dd>The connected Redis API.</dd>
 					<dt><var>$key</var></dt>
-					<dd>The lock key.</dd>
+					<dd>The key.</dd>
+					<dt><var>$value</var></dt>
+					<dd>The value.</dd>
 					<dt><var>$expire</var></dt>
-					<dd>The timeout in seconds when a lock expires.</dd>
+					<dd>The TTL seconds.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					boolean<br>True, if the lock could be acquired.
+					boolean<br>True, if the key was set.
 				</div>
 
-				<h4>Throws</h4>
-				<div class="list">
-					LockAcquireException<br>An error happened.
-				</div>
 
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="release" id="_release">
+	<tr data-order="evalScript" id="_evalScript">
 
 		<td class="attributes"><code>
 			 protected 
 
-			boolean
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_release">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.MemcachedMutex.html#52-55" title="Go to source code">release</a>( <span>string <var>$key</var></span> )</code>
+		<a class="anchor" href="#_evalScript">#</a>
+		<code><a href="source-class-malkusch.lock.mutex.PredisMutex.html#50-61" title="Go to source code">evalScript</a>( <span>mixed <var>$connection</var></span>, <span>string <var>$script</var></span>, <span>integer <var>$numkeys</var></span>, <span>array <var>$arguments</var></span> )</code>
 
 		<div class="description short">
-			<p>Tries to release a lock.</p>
+			
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Tries to release a lock.</p>
+			
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd>The lock key.</dd>
+					<dt><var>$connection</var></dt>
+					<dd>The connected Redis API.</dd>
+					<dt><var>$script</var></dt>
+					<dd>The Lua script.</dd>
+					<dt><var>$numkeys</var></dt>
+					<dd>The number of arguments that represent Redis key names.</dd>
+					<dt><var>$arguments</var></dt>
+					<dd>Keys and values.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					boolean<br>True, if the lock could be released.
+					mixed<br>The script result, or false if executing failed.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getConnections" id="_getConnections">
+
+		<td class="attributes"><code>
+			 protected 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getConnections">#</a>
+		<code><a href="source-class-malkusch.lock.mutex.PredisMutex.html#63-66" title="Go to source code">getConnections</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>The list of connected Redis APIs.
 				</div>
 
 
@@ -292,6 +337,15 @@ it has to be added with Memcached::addServer().</p>
 	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from malkusch\lock\mutex\AbstractRedisMutex</caption>
+	<tr>
+		<td><code>
+acquire(), 
+release()
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Methods inherited from malkusch\lock\mutex\AbstractSpinlockMutex</caption>
 	<tr>

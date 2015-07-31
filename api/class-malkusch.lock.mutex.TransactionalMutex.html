@@ -61,6 +61,8 @@
 				<li><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
 				<li class="active"><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
@@ -105,9 +107,12 @@
 
 
 	<div class="description">
-	<p>Synchronization is delegated to the DBS.</p>
+	<p>Serialization is delegated to the DBS.</p>
 
-<p>The exclusive code is executed within a transaction.</p>
+<p>The critical code is executed within a transaction. The DBS will decide
+which parts of that code need to be locked (if at all).</p>
+
+<p>A failing transaction will be replayed.</p>
 	</div>
 
 	<dl class="tree">
@@ -144,7 +149,7 @@
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.TransactionalMutex.html#8-85" title="Go to source code">mutex/TransactionalMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.TransactionalMutex.html#8-120" title="Go to source code">mutex/TransactionalMutex.php</a>
 		<br>
 	</div>
 
@@ -164,7 +169,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.TransactionalMutex.html#30-40" title="Go to source code">__construct</a>( <span>PDO <var>$pdo</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.TransactionalMutex.html#33-50" title="Go to source code">__construct</a>( <span>PDO <var>$pdo</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
 			<p>Sets the PDO.</p>
@@ -183,6 +188,11 @@
 				</dl></div>
 
 
+				<h4>Throws</h4>
+				<div class="list">
+					InvalidArgumentException<br>PDO must be configured to throw exceptions.<br>
+					LengthException<br>The timeout must be greater than 0.
+				</div>
 
 
 
@@ -201,7 +211,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_synchronized">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.TransactionalMutex.html#42-84" title="Go to source code">synchronized</a>( <span>callable <var>$code</var></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.TransactionalMutex.html#52-98" title="Go to source code">synchronized</a>( <span>callable <var>$code</var></span> )</code>
 
 		<div class="description short">
 			<p>Executes the critical code within a transaction.</p>
@@ -211,10 +221,12 @@
 			<p>Executes the critical code within a transaction.</p>
 
 <p>It's up to the user to set the correct transaction isolation level.
-However if the commit fails, the code will be executed again. Therefore
-the code must not have any side effects besides SQL statements.</p>
+However if the transaction fails (i.e. a \PDOException is thrown),
+the code will be executed again. Therefore the code must not have any
+side effects besides SQL statements.</p>
 
-<p>If the code throws an exception, the transaction is rolled back.</p>
+<p>If the code throws an exception, the transaction is rolled back and will
+not be replayed.</p>
 
 
 				<h4>Parameters</h4>
