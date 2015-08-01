@@ -63,6 +63,7 @@
 				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.RedisMutex.html">RedisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
@@ -119,11 +120,17 @@
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
-malkusch\lock\mutex\AbstractSpinlockMutex
+malkusch\lock\mutex\LockMutex
 			
 			
 		</dd>
 		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by">
+malkusch\lock\mutex\SpinlockMutex
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
 			<img src="resources/inherit.png" alt="Extended by">
 <b><span>malkusch\lock\mutex\MemcacheMutex</span></b>			
 			
@@ -201,7 +208,7 @@ I.e. Memcache::connect() was already called.</p>
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code>malkusch\lock\mutex\AbstractSpinlockMutex::__construct()</code></div>
+				<div class="list"><code>malkusch\lock\mutex\SpinlockMutex::__construct()</code></div>
 
 		</div>
 		</div></td>
@@ -209,11 +216,20 @@ I.e. Memcache::connect() was already called.</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from malkusch\lock\mutex\AbstractSpinlockMutex</caption>
+	<caption>Methods inherited from malkusch\lock\mutex\SpinlockMutex</caption>
 	<tr>
 		<td><code>
 acquire(), 
+lock(), 
 release(), 
+unlock()
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from malkusch\lock\mutex\LockMutex</caption>
+	<tr>
+		<td><code>
 synchronized()
 		</code></td>
 	</tr>
@@ -235,7 +251,7 @@ synchronized()
 
 
 	<table class="summary inherited">
-	<caption>Constants inherited from malkusch\lock\mutex\AbstractSpinlockMutex</caption>
+	<caption>Constants inherited from malkusch\lock\mutex\SpinlockMutex</caption>
 	<tr>
 		<td><code>
 <b>PREFIX</b>

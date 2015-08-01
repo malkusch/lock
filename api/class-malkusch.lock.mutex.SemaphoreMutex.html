@@ -63,6 +63,7 @@
 				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.RedisMutex.html">RedisMutex</a></li>
 				<li class="active"><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
@@ -119,6 +120,12 @@
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
+malkusch\lock\mutex\LockMutex
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by">
 <b><span>malkusch\lock\mutex\SemaphoreMutex</span></b>			
 			
 			
@@ -144,7 +151,7 @@
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.SemaphoreMutex.html#8-60" title="Go to source code">mutex/SemaphoreMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.SemaphoreMutex.html#8-65" title="Go to source code">mutex/SemaphoreMutex.php</a>
 		<br>
 	</div>
 
@@ -198,60 +205,18 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="synchronized" id="_synchronized">
-
-		<td class="attributes"><code>
-			 public 
-
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_synchronized">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.SemaphoreMutex.html#46-59" title="Go to source code">synchronized</a>( <span>callable <var>$code</var></span> )</code>
-
-		<div class="description short">
-			<p>Executes a block of code exclusively.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Executes a block of code exclusively.</p>
-
-<p>This method implements Java's synchronized semantic. I.e. this method
-waits until a lock could be acquired, executes the code exclusively and
-releases the lock.</p>
-
-<p>The code block may throw an exception. In this case the lock will be
-released as well.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$code</var></dt>
-					<dd>The synchronized execution block.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					mixed<br>The return value of the execution block.
-				</div>
-
-				<h4>Throws</h4>
-				<div class="list">
-					Exception<br>The execution block threw an exception.<br>
-					<code><a href="class-malkusch.lock.exception.LockAcquireException.html">malkusch\lock\exception\LockAcquireException</a></code><br>The mutex could not be aquired, no further side effects.<br>
-					<code><a href="class-malkusch.lock.exception.LockReleaseException.html">malkusch\lock\exception\LockReleaseException</a></code><br>The mutex could not be released, the code was already executed.
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from malkusch\lock\mutex\LockMutex</caption>
+	<tr>
+		<td><code>
+lock(), 
+synchronized(), 
+unlock()
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-malkusch.lock.mutex.Mutex.html#methods">malkusch\lock\mutex\Mutex</a></caption>
 	<tr>

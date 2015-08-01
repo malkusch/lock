@@ -63,6 +63,7 @@
 				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
 				<li class="active"><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.PredisMutex.html">PredisMutex</a></li>
+				<li><a href="class-malkusch.lock.mutex.RedisMutex.html">RedisMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.SemaphoreMutex.html">SemaphoreMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.TransactionalMutex.html">TransactionalMutex</a></li>
 			</ul>
@@ -110,6 +111,9 @@
 	<p>Mutex based on the Redlock algorithm using the phpredis extension.</p>
 
 <p>This implementation requires at least phpredis-2.2.4.</p>
+
+<p>Note: If you're going to use this mutex in a forked process, you have to call
+<code><a href="class-malkusch.lock.mutex.RedisMutex.html#_seedRandom">malkusch\lock\mutex\RedisMutex::seedRandom()</a></code> in each instance.</p>
 	</div>
 
 	<dl class="tree">
@@ -121,17 +125,24 @@
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
-malkusch\lock\mutex\AbstractSpinlockMutex
+malkusch\lock\mutex\LockMutex
 			
 			
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by">
-malkusch\lock\mutex\AbstractRedisMutex
+malkusch\lock\mutex\SpinlockMutex
 			
 			
 		</dd>
 		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by">
+			<a href="class-malkusch.lock.mutex.RedisMutex.html"><span>malkusch\lock\mutex\RedisMutex</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
 			<img src="resources/inherit.png" alt="Extended by">
 <b><span>malkusch\lock\mutex\PHPRedisMutex</span></b>			
 			
@@ -160,7 +171,7 @@ malkusch\lock\mutex\AbstractRedisMutex
 				<a href="http://redis.io/topics/distlock">http://redis.io/topics/distlock</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.PHPRedisMutex.html#9-81" title="Go to source code">mutex/PHPRedisMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.PHPRedisMutex.html#8-67" title="Go to source code">mutex/PHPRedisMutex.php</a>
 		<br>
 	</div>
 
@@ -180,7 +191,7 @@ malkusch\lock\mutex\AbstractRedisMutex
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.PHPRedisMutex.html#28-46" title="Go to source code">__construct</a>( <span>array <var>$connections</var></span>, <span>string <var>$name</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.PHPRedisMutex.html#25-40" title="Go to source code">__construct</a>( <span>array <var>$redisAPIs</var></span>, <span>string <var>$name</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
 			<p>Sets the connected Redis APIs.</p>
@@ -195,7 +206,7 @@ called already.</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$connections</var></dt>
+					<dt><var>$redisAPIs</var></dt>
 					<dd>The Redis connections.</dd>
 					<dt><var>$name</var></dt>
 					<dd>The lock name.</dd>
@@ -206,13 +217,12 @@ called already.</p>
 
 				<h4>Throws</h4>
 				<div class="list">
-					LengthException<br>The timeout must be greater than 0.<br>
-					<code><a href="class-malkusch.lock.exception.MutexException.html">malkusch\lock\exception\MutexException</a></code><br>Failed to initialize the random generator.
+					LengthException<br>The timeout must be greater than 0.
 				</div>
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code>malkusch\lock\mutex\AbstractRedisMutex::__construct()</code></div>
+				<div class="list"><code><a href="class-malkusch.lock.mutex.RedisMutex.html#___construct">malkusch\lock\mutex\RedisMutex::__construct()</a></code></div>
 
 		</div>
 		</div></td>
@@ -220,19 +230,26 @@ called already.</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from malkusch\lock\mutex\AbstractRedisMutex</caption>
+	<caption>Methods inherited from <a href="class-malkusch.lock.mutex.RedisMutex.html#methods">malkusch\lock\mutex\RedisMutex</a></caption>
 	<tr>
 		<td><code>
-acquire(), 
-add(), 
-evalScript(), 
-getConnections(), 
-release()
+			<a href="class-malkusch.lock.mutex.RedisMutex.html#_seedRandom">seedRandom()</a>
 		</code></td>
 	</tr>
 	</table>
 	<table class="summary inherited">
-	<caption>Methods inherited from malkusch\lock\mutex\AbstractSpinlockMutex</caption>
+	<caption>Methods inherited from malkusch\lock\mutex\SpinlockMutex</caption>
+	<tr>
+		<td><code>
+acquire(), 
+lock(), 
+release(), 
+unlock()
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from malkusch\lock\mutex\LockMutex</caption>
 	<tr>
 		<td><code>
 synchronized()
@@ -256,7 +273,7 @@ synchronized()
 
 
 	<table class="summary inherited">
-	<caption>Constants inherited from malkusch\lock\mutex\AbstractSpinlockMutex</caption>
+	<caption>Constants inherited from malkusch\lock\mutex\SpinlockMutex</caption>
 	<tr>
 		<td><code>
 <b>PREFIX</b>
