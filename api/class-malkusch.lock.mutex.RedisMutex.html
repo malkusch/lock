@@ -136,6 +136,8 @@ malkusch\lock\mutex\SpinlockMutex
 		<dd style="padding-left:90px">
 			<img src="resources/inherit.png" alt="Extended by">
 <b><span>malkusch\lock\mutex\RedisMutex</span></b>			
+			 implements 
+<span>Psr\Log\LoggerAwareInterface</span>
 			
 			
 		</dd>
@@ -167,7 +169,7 @@ malkusch\lock\mutex\SpinlockMutex
 				<a href="http://redis.io/topics/distlock">http://redis.io/topics/distlock</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.RedisMutex.html#5-156" title="Go to source code">mutex/RedisMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.RedisMutex.html#11-232" title="Go to source code">mutex/RedisMutex.php</a>
 		<br>
 	</div>
 
@@ -187,7 +189,7 @@ malkusch\lock\mutex\SpinlockMutex
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.RedisMutex.html#30-45" title="Go to source code">__construct</a>( <span>array <var>$redisAPIs</var></span>, <span>string <var>$name</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.RedisMutex.html#41-57" title="Go to source code">__construct</a>( <span>array <var>$redisAPIs</var></span>, <span>string <var>$name</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
 			<p>Sets the Redis APIs.</p>
@@ -220,6 +222,46 @@ malkusch\lock\mutex\SpinlockMutex
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="setLogger" id="_setLogger">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setLogger">#</a>
+		<code><a href="source-class-malkusch.lock.mutex.RedisMutex.html#59-72" title="Go to source code">setLogger</a>( <span>Psr\Log\LoggerInterface <var>$logger</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets a logger instance on the object</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets a logger instance on the object</p>
+
+<p>RedLock is a fault tolerant lock algorithm. I.e. it does tolerate
+failing redis connections without breaking. If you want to get notified
+about such events you'll have to provide a logger. Those events will
+be logged as warnings.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$logger</var></dt>
+					<dd>The logger.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="seedRandom" id="_seedRandom">
 
 		<td class="attributes"><code>
@@ -232,7 +274,7 @@ malkusch\lock\mutex\SpinlockMutex
 
 		<td class="name"><div>
 		<a class="anchor" href="#_seedRandom">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.RedisMutex.html#47-60" title="Go to source code">seedRandom</a>( <span>integer|null <var>$seed</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.RedisMutex.html#74-87" title="Go to source code">seedRandom</a>( <span>integer|null <var>$seed</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Seeds the random number generator.</p>
@@ -242,7 +284,7 @@ malkusch\lock\mutex\SpinlockMutex
 			<p>Seeds the random number generator.</p>
 
 <p>Normally you don't need to seed, as this happens automatically. But
-if you experience a LockReleaseException this might come
+if you experience a <code><a href="class-malkusch.lock.exception.LockReleaseException.html">malkusch\lock\exception\LockReleaseException</a></code> this might come
 from identically created random tokens. In this case you could seed
 from /dev/urandom.</p>
 

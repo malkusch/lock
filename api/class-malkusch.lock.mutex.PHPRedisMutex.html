@@ -139,6 +139,8 @@ malkusch\lock\mutex\SpinlockMutex
 			<img src="resources/inherit.png" alt="Extended by">
 			<a href="class-malkusch.lock.mutex.RedisMutex.html"><span>malkusch\lock\mutex\RedisMutex</span></a>
 			
+			 implements 
+<span>Psr\Log\LoggerAwareInterface</span>
 			
 			
 		</dd>
@@ -171,7 +173,7 @@ malkusch\lock\mutex\SpinlockMutex
 				<a href="http://redis.io/topics/distlock">http://redis.io/topics/distlock</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.PHPRedisMutex.html#8-67" title="Go to source code">mutex/PHPRedisMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.PHPRedisMutex.html#10-86" title="Go to source code">mutex/PHPRedisMutex.php</a>
 		<br>
 	</div>
 
@@ -191,7 +193,7 @@ malkusch\lock\mutex\SpinlockMutex
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.PHPRedisMutex.html#25-40" title="Go to source code">__construct</a>( <span>array <var>$redisAPIs</var></span>, <span>string <var>$name</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.PHPRedisMutex.html#27-42" title="Go to source code">__construct</a>( <span>array <var>$redisAPIs</var></span>, <span>string <var>$name</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
 			<p>Sets the connected Redis APIs.</p>
@@ -233,7 +235,8 @@ called already.</p>
 	<caption>Methods inherited from <a href="class-malkusch.lock.mutex.RedisMutex.html#methods">malkusch\lock\mutex\RedisMutex</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-malkusch.lock.mutex.RedisMutex.html#_seedRandom">seedRandom()</a>
+			<a href="class-malkusch.lock.mutex.RedisMutex.html#_seedRandom">seedRandom()</a>, 
+			<a href="class-malkusch.lock.mutex.RedisMutex.html#_setLogger">setLogger()</a>
 		</code></td>
 	</tr>
 	</table>
