@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class malkusch\lock\mutex\MemcacheMutex</title>
+	<title>Deprecated Class malkusch\lock\mutex\MemcacheMutex</title>
 
-	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
+	<link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
 
 </head>
 
@@ -58,7 +58,7 @@
 				<li><a href="class-malkusch.lock.mutex.CASMutex.html">CASMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.FlockMutex.html">FlockMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.MemcachedMutex.html">MemcachedMutex</a></li>
-				<li class="active"><a href="class-malkusch.lock.mutex.MemcacheMutex.html">MemcacheMutex</a></li>
+				<li class="active"><a href="class-malkusch.lock.mutex.MemcacheMutex.html" class="deprecated">MemcacheMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.Mutex.html">Mutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.NoMutex.html">NoMutex</a></li>
 				<li><a href="class-malkusch.lock.mutex.PHPRedisMutex.html">PHPRedisMutex</a></li>
@@ -104,7 +104,7 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class MemcacheMutex</h1>
+	<h1 class="deprecated">Class MemcacheMutex</h1>
 
 
 	<div class="description">
@@ -132,7 +132,7 @@ malkusch\lock\mutex\SpinlockMutex
 		</dd>
 		<dd style="padding-left:90px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>malkusch\lock\mutex\MemcacheMutex</span></b>			
+<b><span class="deprecated">malkusch\lock\mutex\MemcacheMutex</span></b>			
 			
 			
 		</dd>
@@ -151,13 +151,15 @@ malkusch\lock\mutex\SpinlockMutex
 		<b>Namespace:</b> <a href="namespace-malkusch.html">malkusch</a>\<a href="namespace-malkusch.lock.html">lock</a>\<a href="namespace-malkusch.lock.mutex.html">mutex</a><br>
 		
 
+				<b>Deprecated:</b>
+				1.0.0 Use MemcachedMutex together with ext-memcached.<br>
 				<b>License:</b>
 				<a href="WTFPL">WTFPL</a><br>
 				<b>Author:</b>
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#7-62" title="Go to source code">mutex/MemcacheMutex.php</a>
+			<b>Located at</b> <a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#7-64" title="Go to source code">mutex/MemcacheMutex.php</a>
 		<br>
 	</div>
 
@@ -165,7 +167,7 @@ malkusch\lock\mutex\SpinlockMutex
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="__construct" id="___construct">
+	<tr data-order="__construct" id="___construct" class="deprecated">
 
 		<td class="attributes"><code>
 			 public 
@@ -177,7 +179,7 @@ malkusch\lock\mutex\SpinlockMutex
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#28-45" title="Go to source code">__construct</a>( <span>string <var>$name</var></span>, <span>Memcache <var>$memcache</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
+		<code><a href="source-class-malkusch.lock.mutex.MemcacheMutex.html#29-47" title="Go to source code">__construct</a>( <span>string <var>$name</var></span>, <span>Memcache <var>$memcache</var></span>, <span>integer <var>$timeout</var> = <span class="php-num">3</span></span> )</code>
 
 		<div class="description short">
 			<p>Sets the lock's name and the connected Memcache API.</p>
