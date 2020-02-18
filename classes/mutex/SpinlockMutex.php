@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace malkusch\lock\mutex;
 
 use malkusch\lock\exception\ExecutionOutsideLockException;
+use malkusch\lock\exception\LockedTimeoutException;
 use malkusch\lock\exception\LockAcquireException;
 use malkusch\lock\exception\LockReleaseException;
 use malkusch\lock\util\Loop;
@@ -30,6 +31,11 @@ abstract class SpinlockMutex extends LockMutex
     private $timeout;
 
     /**
+     * @var int The timeout in seconds a process will wait while mutex is locked
+     */
+    private $lockedTimeout;
+
+    /**
      * @var \malkusch\lock\util\Loop The loop.
      */
     private $loop;
@@ -45,21 +51,29 @@ abstract class SpinlockMutex extends LockMutex
     private $acquired;
 
     /**
+     * @var double The timestamp before the first lock has been attempted.
+     */
+    private $start;
+
+    /**
      * Sets the timeout.
      *
      * @param int $timeout The time in seconds a lock expires, default is 3.
+     * @param int $lockedTimeout The time in seconds we are spinning while locked.
      *
      * @throws \LengthException The timeout must be greater than 0.
      */
-    public function __construct(string $name, int $timeout = 3)
+    public function __construct(string $name, int $timeout = 3, int $lockedTimeout = null)
     {
         $this->timeout = $timeout;
+        $this->lockedTimeout = $lockedTimeout;
         $this->loop = new Loop($this->timeout);
         $this->key = self::PREFIX . $name;
     }
 
     protected function lock(): void
     {
+        $this->start = microtime(true);
         $this->loop->execute(function (): void {
             $this->acquired = microtime(true);
 
@@ -72,6 +86,10 @@ abstract class SpinlockMutex extends LockMutex
              */
             if ($this->acquire($this->key, $this->timeout + 1)) {
                 $this->loop->end();
+            } elseif ($this->lockedTimeout !== null) {
+                if (microtime(true) - $this->start > $this->lockedTimeout) {
+                    throw new LockedTimeoutException("Timeout while locked of $this->lockedTimeout seconds exceeded.");
+                }
             }
         });
     }

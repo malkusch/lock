@@ -36,11 +36,12 @@ class PHPRedisMutex extends RedisMutex
      * @param string $name The lock name.
      * @param int $timeout The time in seconds a lock expires after. Default is
      * 3 seconds.
+     * @param int      $lockedTimeout The maximum time in seconds we are spinning while locked.
      * @throws \LengthException The timeout must be greater than 0.
      */
-    public function __construct(array $redisAPIs, string $name, int $timeout = 3)
+    public function __construct(array $redisAPIs, string $name, int $timeout = 3, int $lockedTimeout = null)
     {
-        parent::__construct($redisAPIs, $name, $timeout);
+        parent::__construct($redisAPIs, $name, $timeout, $lockedTimeout);
     }
 
     /**

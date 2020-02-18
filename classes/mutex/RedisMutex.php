@@ -42,12 +42,13 @@ abstract class RedisMutex extends SpinlockMutex implements LoggerAwareInterface
      * @param array  $redisAPIs The Redis APIs.
      * @param string $name      The lock name.
      * @param int    $timeout   The time in seconds a lock expires, default is 3.
+     * @param int    $lockedTimeout The maximum time in seconds we are spinning while locked.
      *
      * @throws \LengthException The timeout must be greater than 0.
      */
-    public function __construct(array $redisAPIs, string $name, int $timeout = 3)
+    public function __construct(array $redisAPIs, string $name, int $timeout = 3, int $lockedTimeout = null)
     {
-        parent::__construct($name, $timeout);
+        parent::__construct($name, $timeout, $lockedTimeout);
 
         $this->redisAPIs = $redisAPIs;
         $this->logger = new NullLogger();
